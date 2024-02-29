@@ -1,2 +1,10 @@
 *.o
+*.exe
+.vscode
+.DS_Store
 llrec-test
+stack_test.cpp
+stack_test.o
+stack-test.exe
+hw3_tests/
+hw3_tests.tar.gz

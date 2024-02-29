@@ -6,7 +6,7 @@
 
 // Use inheritance from std::vector (choose public/private) as appropriate
 template <typename T>
-class Stack 
+class Stack : private std::vector<T>
 {
 public:
     Stack();
@@ -20,4 +20,56 @@ public:
 };
 
 
+template <typename T>
+Stack<T>::Stack() : std::vector<T>()
+{
+    
+}
+
+template <typename T>
+Stack<T>::~Stack()
+{
+    
+}
+
+template <typename T>
+bool Stack<T>::empty() const
+{
+    return (!size());
+}
+
+template <typename T>
+size_t Stack<T>::size() const
+{
+    return std::vector<T>::size();
+}
+
+template <typename T>
+void Stack<T>::push(const T& item)
+{
+    this->push_back(item);
+}
+
+template <typename T>
+void Stack<T>::pop()
+{
+    if (empty())
+    {
+        throw std::underflow_error("Underflow Error");
+    }
+    this->pop_back();
+}
+
+template <typename T>
+const T& Stack<T>::top() const
+{
+    if (empty())
+    {
+        throw std::underflow_error("Underflow Error");
+    }
+    return this->back();
+}
+
+
 #endif
+
